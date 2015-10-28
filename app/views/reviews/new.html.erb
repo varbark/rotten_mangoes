@@ -1,0 +1,31 @@
+<%= link_to 'Back to movie', movie_path(@movie) %>
+
+<h2> Write a review for <em><%= @movie.title %></em>.</h2>
+
+<%= form_for ([@movie, @review]) do |f| %>
+  <% if @review.errors.any? %>
+    <div> 
+      <ul>
+        <%= pluralize(@review.errors.count, 'error') %> prevented the review from being saved:
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :text %>
+    <%= f.text_area "text" %>
+  </div>  
+  <div>
+    <%= f.label :rating_out_of_ten %>
+    <%= f.number_field :rating_out_of_ten %>
+  </div>
+  <div>
+    <%= f.submit "Submit" %>
+  </div>
+
+
+
+<% end %>
