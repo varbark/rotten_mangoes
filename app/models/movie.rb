@@ -1,3 +1,5 @@
+# require 'carrierwave/orm/activerecord'
+
 class Movie < ActiveRecord::Base
   has_many :reviews
   validates :title, 
@@ -8,15 +10,20 @@ class Movie < ActiveRecord::Base
     numericality: {only_integer: true}
   validates :description,
     presence: true
+  # validates :image,
+  #   presence: true  
 
-  validates :poster_image_url,
-    presence: true
+  # validates :poster_image_url,
+  #   presence: true
 
   validates :release_date,
     presence: true
 
   validate :release_date_is_in_the_past
 
+  mount_uploader :image, MovieCoverUploader
+
+  
   def review_average
     reviews.sum(:rating_out_of_ten) / reviews.size if reviews.size > 0
   end
