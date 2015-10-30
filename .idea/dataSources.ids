@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Rails rotten_mangoes: development" uuid="9cec559e-4fe7-4e93-bc5a-16d18667e682">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails rotten_mangoes: test" uuid="57be6304-2ca4-449d-8320-eca58a6fde2a">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>
