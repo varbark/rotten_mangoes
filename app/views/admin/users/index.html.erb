@@ -1,1 +1,18 @@
-<%= paginate @user_pages %>
+<%= paginate @users %>
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.firstname %></td>
+      <td><%= user.lastname %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>  
+<%= paginate @users %>

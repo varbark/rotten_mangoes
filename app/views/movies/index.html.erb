@@ -1,12 +1,24 @@
  <h1>Rotten Mangoes</h1>
     <%= link_to "Submit a movie!", new_movie_path %>
     <hr>
-  <% @movies.each do |movie| %>
-      <%= link_to image_tag(movie.image_url.to_s), movie_path(movie) %>
-      <h2><%= link_to movie.title, movie_path(movie) %></h2>
-      <h3><%= formatted_date(movie.release_date) %></h3>
-      <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-      <p>Average rating: <%= movie.review_average %>/10 </p>
-      <p><%= movie.description %></p>
-      <hr>
-    <% end %>
+<%= form_tag movies_path, method: 'get' do %> 
+  <%= label_tag :title, "Search for title:" %>
+  <%= text_field_tag :title, params[:title], placeholder: 'Search for the movie title:' %>
+  <%= label_tag :director, "Search for director:" %>
+  <%= text_field_tag :director, params[:director], placeholder: 'Search for the movie director:' %>
+  <%= select_tag :runtime, 
+    options_for_select(
+      [["", nil], ["Under 90 mins", "under90"],["Between 90 and 120 minutes","between90_120"],["Over 120 minutes", "over120"]])%>
+  <!-- By set the :name to nil, there will not show the commit=search on the url -->
+  <%= submit_tag "Search", :name => nil %> 
+
+<% end %>
+<p> Search Result </p>
+
+<% if @movies.present?%>
+  <%= render 'result' %>
+<% else %>  
+  <p>There are no movies contain the form</p>
+<% end %>
+
+<hr>

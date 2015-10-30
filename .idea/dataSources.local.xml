@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails rotten_mangoes: development" uuid="9cec559e-4fe7-4e93-bc5a-16d18667e682">
+      <first-sync>true</first-sync>
+    </data-source>
+    <data-source name="Rails rotten_mangoes: test" uuid="57be6304-2ca4-449d-8320-eca58a6fde2a">
+      <first-sync>true</first-sync>
+    </data-source>
+  </component>
+</project>
