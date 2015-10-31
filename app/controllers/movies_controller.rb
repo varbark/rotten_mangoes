@@ -37,7 +37,6 @@ class MoviesController < ApplicationController
     else
       render :edit
     end
-    
   end
 
   def destroy
