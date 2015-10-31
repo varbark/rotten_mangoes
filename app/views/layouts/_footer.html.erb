@@ -5,12 +5,12 @@
       <% if admin_user? %>
       Signed as Admin 
       <p> Go to see all the <%= link_to 'users list', admin_users_path %> </p>
-      XOXO Signed in as <%= current_user.full_name %> (<%= link_to "Log out", session_path("current"), method: :delete %>)
+      XOXO Signed in as <%= current_user.full_name %> (<%= link_to "Log out", sessions_path("current"), method: :delete %>)
       <% else %>
-      Signed in as <%= current_user.full_name %> (<%= link_to "Log out", session_path("current"), method: :delete %>)
+      Signed in as <%= current_user.full_name %> (<%= link_to "Log out", sessions_path("current"), method: :delete %>)
       <% end %>
     <% else %>  
-      <%= link_to 'Log in', new_session_path  %> | <%= link_to 'Sign up', new_user_path %>
+      <%= link_to 'Log in', new_sessions_path  %> | <%= link_to 'Sign up', new_sessions_path %>
     <% end %>  
   </small>
 
