@@ -33,10 +33,11 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    @user.reviews.destroy
     @user.destroy
     redirect_to admin_users_path
   end
-  
+
   protected
   def user_params
     params.require(:user).permit(:email, :firstname, 
