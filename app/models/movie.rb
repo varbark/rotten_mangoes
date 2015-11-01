@@ -1,7 +1,7 @@
 # require 'carrierwave/orm/activerecord'
 
 class Movie < ActiveRecord::Base
-  has_many :reviews, dependet: :destroy
+  has_many :reviews
   validates :title, 
     presence: true
   validates :director, 

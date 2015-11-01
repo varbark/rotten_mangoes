@@ -3,7 +3,14 @@ class SessionsController < ApplicationController
   end
 
   def create
+    binding.pry
+    if admin_user?
+      session[:user_id_2] = params[:user_id] 
+      return redirect_to movies_path
+    end
+
     user = User.find_by(email: params[:email])
+
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to movies_path
