@@ -28,6 +28,22 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def another_user
+      if admin_user? && session[:user_id_2]
+        @user_2 ||= User.find(session[:user_id_2]) 
+      end
+    end
+
+    def admin_switch_to_another_user?
+      if another_user
+        true
+      else
+        false
+      end
+    end
+
     helper_method :current_user
     helper_method :admin_user?
+    helper_method :admin_switch_to_another_user?
+    helper_method :another_user
 end

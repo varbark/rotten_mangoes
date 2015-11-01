@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    binding.pry
     if admin_user?
       session[:user_id_2] = params[:user_id] 
       return redirect_to movies_path
