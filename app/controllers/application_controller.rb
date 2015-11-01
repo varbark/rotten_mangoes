@@ -16,9 +16,7 @@ class ApplicationController < ActionController::Base
     end
 
     def admin_user?
-      if current_user
-        @current_user.admin
-      end
+      session[:admin]
     end
 
     def only_admin_access
@@ -28,6 +26,16 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def admin_switch_to_another_user?
+      if session[:admin] != current_user.admin
+        true
+      else
+        false
+      end
+    end
+
     helper_method :current_user
     helper_method :admin_user?
+    helper_method :admin_switch_to_another_user?
+    helper_method :another_user
 end
