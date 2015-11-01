@@ -16,9 +16,7 @@ class ApplicationController < ActionController::Base
     end
 
     def admin_user?
-      if current_user
-        @current_user.admin
-      end
+      session[:admin]
     end
 
     def only_admin_access
@@ -28,14 +26,8 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def another_user
-      if admin_user? && session[:user_id_2]
-        @user_2 ||= User.find(session[:user_id_2]) 
-      end
-    end
-
     def admin_switch_to_another_user?
-      if another_user
+      if session[:admin] != current_user.admin
         true
       else
         false

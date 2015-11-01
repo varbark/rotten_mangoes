@@ -3,8 +3,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if admin_user?
-      session[:user_id_2] = params[:user_id] 
+    if params[:another_user_id]
+      session[:user_id] = params[:another_user_id] 
       return redirect_to movies_path
     end
 
@@ -12,6 +12,9 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
+      if current_user.admin
+        session[:admin] ||= current_user.admin  
+      end
       redirect_to movies_path
     else
       flash.now[:alert] = "Log in failed....." # The old fashion way
@@ -21,6 +24,9 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    if session[:admin] 
+      session[:user_id_2] = nil
+    end
     redirect_to movies_path, notice: "Adios!"
   end
   

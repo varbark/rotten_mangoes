@@ -6,7 +6,7 @@
         Signed as Admin 
         <p> Go to see all the <%= link_to 'users list', admin_users_path %> </p>
         <% if admin_switch_to_another_user? %>
-          <p>Switch to user : <%= another_user.firstname %> </p>
+          <p>Switch to user : <%= current_user.full_name %> </p>
         <% end %>
         XOXO Signed in as <%= current_user.full_name %> (<%= link_to "Log out", session_path, method: :delete %>)
       <% else %>
